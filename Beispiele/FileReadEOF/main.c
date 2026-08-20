@@ -6,7 +6,7 @@ void main() {
     char buffer[256];
 
     // Datei öffnen
-    file = fopen("beispiel.txt", "r");
+    file = fopen("Beispiele/FileReadEOF/beispiel1.txt", "r");
     if (file == NULL) {
         perror("Fehler beim Öffnen der Datei");
     }

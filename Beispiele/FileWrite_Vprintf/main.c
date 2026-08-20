@@ -2,7 +2,7 @@
 #include <stdarg.h>
 
 void write_log(const char *format, ...) {
-    FILE *file = fopen("log.txt", "w");
+    FILE *file = fopen("Beispiele/FileWrite_Vprintf/log.txt", "w");
     if (file != NULL) {
         va_list args;
         va_start(args, format);
