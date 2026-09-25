@@ -2,37 +2,37 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
+      "label": "Build current file (auto)",
       "type": "shell",
-      "command": "gcc",
+      "command": "bash",
       "args": [
-        "-Wall",
-        "-Wextra",
-        "-std=c11",
-        "-g",
-        "${file}",
-        "-o",
-        "${workspaceFolder}/main"
+        "-lc",
+        "if [[ \"${fileExtname}\" == \".c\" ]]; then gcc -Wall -Wextra -std=c11 -g \"${file}\" -o \"${workspaceFolder}/main\"; elif [[ \"${fileExtname}\" == \".cpp\" || \"${fileExtname}\" == \".cc\" || \"${fileExtname}\" == \".cxx\" ]]; then g++ -Wall -Wextra -std=c++17 -g \"${file}\" -o \"${workspaceFolder}/main\"; else echo \"Unsupported file type: ${fileExtname}\"; exit 1; fi"
       ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"],
-      "detail": "Kompiliert die aktuell geöffnete C-Datei mit GCC."
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "detail": "Kompiliert die aktuell geöffnete C- oder C++-Datei automatisch."
     },
     {
-      "label": "run",
+      "label": "Run",
       "type": "shell",
       "command": "${workspaceFolder}/main",
-      "dependsOn": "build",
+      "dependsOn": "Build current file (auto)",
       "problemMatcher": [],
-      "detail": "Führt das kompilierte C-Programm aus."
+      "detail": "Führt die kompilierte Ausgabe aus."
     },
     {
-      "label": "clean",
+      "label": "Clean",
       "type": "shell",
-      "command": "rm -f ${workspaceFolder}/main",
+      "command": "rm -f \"${workspaceFolder}/main\"",
       "problemMatcher": [],
       "detail": "Löscht die kompilierte Programmdatei."
     }

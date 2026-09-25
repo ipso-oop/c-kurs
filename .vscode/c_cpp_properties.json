@@ -1,21 +1,35 @@
 {
-  "name": "C Development Environment",
-  "image": "mcr.microsoft.com/devcontainers/cpp:ubuntu",
-
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-vscode.cpptools",
-        "ms-vscode.makefile-tools"
+  "version": 4,
+  "configurations": [
+    {
+      "name": "C",
+      "includePath": [
+        "${workspaceFolder}/**"
       ],
-      "settings": {
-        "C_Cpp.default.compilerPath": "/usr/bin/gcc",
-        "C_Cpp.default.cStandard": "c11",
-        "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
-        "editor.formatOnSave": true
-      }
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c11",
+      "cppStandard": "gnu++17",
+      "intelliSenseMode": "linux-gcc-x64"
+    },
+    {
+      "name": "C++",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "compilerPath": "/usr/bin/g++",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "linux-gcc-x64"
     }
-  },
-
-  "postCreateCommand": "sudo apt update && sudo apt install -y build-essential gdb make"
+  ]
 }
